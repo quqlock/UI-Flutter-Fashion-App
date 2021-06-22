@@ -1,46 +1,65 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_fashion_app/const.dart';
 import 'package:flutter_fashion_app/model/arrivals.dart';
+import 'package:page_view_indicators/page_view_indicators.dart';
 
-class NewArrilasScreen extends StatelessWidget {
-  const NewArrilasScreen({Key? key}) : super(key: key);
+class NewArrivalsScreen extends StatefulWidget {
+  @override
+  _NewArrivalsScreenState createState() => _NewArrivalsScreenState();
+}
+
+class _NewArrivalsScreenState extends State<NewArrivalsScreen> {
+  final int arrivalsListlength = newArrivalsList.length;
+  final pageViewController = PageController();
+  final pageIndexNotifier = ValueNotifier<int>(0);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: buildArrivalsPagesWidget(context),
+        child: buildArrivalsPagesWidget(
+            context, arrivalsListlength, pageIndexNotifier),
       ),
     );
   }
 
-  Widget buildArrivalsPagesWidget(BuildContext context) {
-    return PageView(
-      children: [
-        for (Arrival arr in newArrivalsList)
-          buildAdvertWidget(
+  Widget buildArrivalsPagesWidget(
+    BuildContext context,
+    arrivalsListLength,
+    pageIndexNotifier,
+  ) {
+    return PageView.builder(
+      itemCount: arrivalsListlength,
+      controller: pageViewController,
+      itemBuilder: (BuildContext context, int index) {
+        return buildArrivalWidget(
             context,
-            arr.arrImage,
-            arr.arrTitle,
-            arr.arrSubtitle,
-          ),
-      ],
+            newArrivalsList[index].arrImage,
+            newArrivalsList[index].arrTitle,
+            newArrivalsList[index].arrSubtitle,
+            arrivalsListLength,
+            pageIndexNotifier);
+      },
+      onPageChanged: (int index) {
+        pageIndexNotifier.value = index;
+      },
     );
   }
 
-  Widget buildAdvertWidget(
-    BuildContext context,
-    String advImg,
-    String advTitle,
-    String advName,
-  ) {
+  Widget buildArrivalWidget(
+      BuildContext context,
+      String arrImg,
+      String arrTitle,
+      String arrSubtitle,
+      arrivalsListLength,
+      pageIndexNotifier) {
     return Container(
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height,
       child: Stack(
         children: [
           Image.asset(
-            advImg,
+            arrImg,
             fit: BoxFit.cover,
             height: double.infinity,
             width: double.infinity,
@@ -72,7 +91,7 @@ class NewArrilasScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  advTitle.toUpperCase(),
+                  arrTitle.toUpperCase(),
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 20,
@@ -81,7 +100,7 @@ class NewArrilasScreen extends StatelessWidget {
                 Container(
                   width: MediaQuery.of(context).size.width * 0.75,
                   child: Text(
-                    advName,
+                    arrSubtitle,
                     style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
@@ -110,7 +129,17 @@ class NewArrilasScreen extends StatelessWidget {
                 ),
               ),
             ),
-          )
+          ),
+          Positioned(
+            bottom: 30,
+            left: 20,
+            child: CirclePageIndicator(
+              dotColor: Colors.grey,
+              selectedDotColor: Colors.white,
+              itemCount: arrivalsListlength,
+              currentPageNotifier: pageIndexNotifier,
+            ),
+          ),
         ],
       ),
     );
