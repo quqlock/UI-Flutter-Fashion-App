@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_fashion_app/const.dart';
+import 'package:flutter_fashion_app/model/arrivals.dart';
 
 class NewArrilasScreen extends StatelessWidget {
   const NewArrilasScreen({Key? key}) : super(key: key);
@@ -8,29 +9,31 @@ class NewArrilasScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-          child: PageView(
-        children: [
-          buildAdvertWidget(context, 'assets/images/women2.jpg', 'New arrivals',
-              'Rag & Bone Collection'),
-          buildAdvertWidget(context, 'assets/images/women1.jpg', 'Best deals',
-              'Bone Collection'),
-          buildAdvertWidget(context, 'assets/images/women3.jpg', 'Promotions',
-              'Rag Collection'),
-          buildAdvertWidget(context, 'assets/images/women4.jpg', 'New arrivals',
-              'Rag & Bone Collection'),
-          buildAdvertWidget(context, 'assets/images/women7.jpg', 'New arrivals',
-              'Rag & Bone Collection'),
-          buildAdvertWidget(context, 'assets/images/women6.jpg', 'Promotion',
-              'Best deals Monday'),
-          buildAdvertWidget(context, 'assets/images/women5.jpg', 'New arrivals',
-              'Summe 2021 Collection'),
-        ],
-      )),
+        child: buildArrivalsPagesWidget(context),
+      ),
+    );
+  }
+
+  Widget buildArrivalsPagesWidget(BuildContext context) {
+    return PageView(
+      children: [
+        for (Arrival arr in newArrivalsList)
+          buildAdvertWidget(
+            context,
+            arr.arrImage,
+            arr.arrTitle,
+            arr.arrSubtitle,
+          ),
+      ],
     );
   }
 
   Widget buildAdvertWidget(
-      BuildContext context, String advImg, String advTitle, String advName) {
+    BuildContext context,
+    String advImg,
+    String advTitle,
+    String advName,
+  ) {
     return Container(
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height,
