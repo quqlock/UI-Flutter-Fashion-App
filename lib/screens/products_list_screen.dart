@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_fashion_app/const.dart';
+import 'package:flutter_fashion_app/model/product.dart';
 
 class ProductsListScreen extends StatefulWidget {
   const ProductsListScreen({Key? key}) : super(key: key);
@@ -67,8 +68,31 @@ class _ProductsListScreenState extends State<ProductsListScreen> {
                   ],
                 ),
               ),
-              Container(
-                child: SingleChildScrollView(),
+              SingleChildScrollView(
+                child: Container(
+                  width: 200,
+                  height: 500,
+                  child: GridView.builder(
+                    itemCount: productsList.length,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      mainAxisSpacing: 5,
+                      crossAxisSpacing: 10,
+                      childAspectRatio: 0.7,
+                    ),
+                    itemBuilder: (context, index) {
+                      return Container(
+                        child: Column(
+                          children: [
+                            Image.asset(
+                              productsList[index].productImage,
+                            )
+                          ],
+                        ),
+                      );
+                    },
+                  ),
+                ),
               ),
               Expanded(
                 child: Align(
