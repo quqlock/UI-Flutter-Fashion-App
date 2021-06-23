@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_fashion_app/const.dart';
 import 'package:flutter_fashion_app/screens/new_arrivals_screen.dart';
+import 'package:flutter_fashion_app/widgets/big_button.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -109,14 +110,17 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  buildSignInButtonWidget(() {
+                  SizedBox(
+                    height: 80,
+                  ),
+                  buildBigButtonWidget(() {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
                         builder: (context) => NewArrivalsScreen(),
                       ),
                     );
-                  }),
+                  }, 'Sign in'),
                   buildOrTextWidget(),
                   buildSocialButtonWidget(
                     'Continue with Facebook',
@@ -138,39 +142,6 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
         ),
-      ),
-    );
-  }
-
-  Padding buildSignInButtonWidget(Function signInFunc) {
-    return Padding(
-      padding: const EdgeInsets.only(
-        top: 80,
-      ),
-      child: Row(
-        children: [
-          Expanded(
-            child: ConstrainedBox(
-              constraints: BoxConstraints.tightFor(
-                height: 55,
-              ),
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  primary: mainColor,
-                  elevation: 0,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                ),
-                onPressed: () => signInFunc(),
-                child: Text(
-                  'Sign in',
-                  style: TextStyle(fontSize: 18),
-                ),
-              ),
-            ),
-          ),
-        ],
       ),
     );
   }
