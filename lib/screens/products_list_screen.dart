@@ -68,30 +68,21 @@ class _ProductsListScreenState extends State<ProductsListScreen> {
                   ],
                 ),
               ),
-              SingleChildScrollView(
-                child: Container(
-                  width: 200,
-                  height: 500,
+              Expanded(
+                flex: 6,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
                   child: GridView.builder(
-                    itemCount: productsList.length,
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      mainAxisSpacing: 5,
-                      crossAxisSpacing: 10,
-                      childAspectRatio: 0.7,
-                    ),
-                    itemBuilder: (context, index) {
-                      return Container(
-                        child: Column(
-                          children: [
-                            Image.asset(
-                              productsList[index].productImage,
-                            )
-                          ],
-                        ),
-                      );
-                    },
-                  ),
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        crossAxisSpacing: 10,
+                        mainAxisSpacing: 10,
+                        childAspectRatio: 0.80,
+                      ),
+                      itemCount: productsList.length,
+                      itemBuilder: (context, index) {
+                        return buildProductCardWidget(index);
+                      }),
                 ),
               ),
               Expanded(
@@ -157,6 +148,62 @@ class _ProductsListScreenState extends State<ProductsListScreen> {
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  Widget buildProductCardWidget(int index) {
+    return Card(
+      elevation: 0,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(
+            height: 20,
+          ),
+          Center(
+            child: Image.asset(
+              productsList[index].productImage,
+            ),
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 20.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  productsList[1].productName,
+                  style: TextStyle(fontSize: 14),
+                ),
+                SizedBox(
+                  height: 3,
+                ),
+                Text(
+                  '\$' + productsList[1].productPrice.toStringAsFixed(2),
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                ),
+                (productsList[index].productPriceOld != 0)
+                    ? Text(
+                        '\$' +
+                            productsList[index]
+                                .productPriceOld
+                                .toStringAsFixed(2),
+                        style: TextStyle(
+                          color: Colors.grey,
+                          decoration: TextDecoration.lineThrough,
+                        ),
+                      )
+                    : SizedBox(),
+              ],
+            ),
+          )
+        ],
       ),
     );
   }
