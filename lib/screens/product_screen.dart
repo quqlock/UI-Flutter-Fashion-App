@@ -18,7 +18,7 @@ class _ProductScreenState extends State<ProductScreen> {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(15.0),
             child: Container(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -187,12 +187,26 @@ class _ProductScreenState extends State<ProductScreen> {
                       ],
                     ),
                   ),
-                  Align(
-                    alignment: FractionalOffset.bottomCenter,
-                    child: buildBigButtonWidget(() {
-                      print('Add to cart');
-                    }, 'Add to cart'),
-                  )
+                  Container(
+                    child: Row(
+                      children: [
+                        Expanded(
+                          flex: 1,
+                          child: buildFavButtonWidget(),
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Expanded(
+                          flex: 5,
+                          child: buildBigButtonWidget(
+                            () {},
+                            'Add to cart',
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ),
