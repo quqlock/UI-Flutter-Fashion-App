@@ -7,6 +7,7 @@ class Arrival {
 }
 
 List<Arrival> newArrivalsList = [
+  Arrival('Rag & Bone Collection', 'New arrivals', 'assets/images/women8.jpg'),
   Arrival('Rag & Bone Collection', 'New arrivals', 'assets/images/women2.jpg'),
   Arrival('Rag Collection', 'Promotion', 'assets/images/women1.jpg'),
   Arrival('Holidays 2021 Collection', 'Best Deals', 'assets/images/women3.jpg'),
