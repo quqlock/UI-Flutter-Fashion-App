@@ -1,52 +1,104 @@
 class Product {
-  String productName;
-  double productPrice;
-  double productPriceOld;
-  String productImage;
-  String productDesc;
+  final String productName;
+  final double productPrice;
+  final double? productPriceOld;
+  final String productImage;
+  final String productDesc;
 
-  Product(
-    this.productName,
-    this.productPrice,
+  Product({
+    required this.productName,
+    required this.productPrice,
     this.productPriceOld,
-    this.productImage,
-    this.productDesc,
-  );
+    required this.productImage,
+    required this.productDesc,
+  });
 }
 
-List<Product> productsList = [
-  Product('Felt wide hat', 84.00, 0, 'assets/images/products/hat1.jpg',
-      'Featured on several of the runway look, the hight-domed that hat is made from straw effect fabroc interwomen with shiny threads.'),
-  Product('Felt white brim-hat', 138.00, 0, 'assets/images/products/hat2.jpg',
-      'Featured on several of the runway look, the hight-domed that hat is made from straw effect fabroc interwomen with shiny threads.'),
-  Product('Felt hat for women', 76.00, 89.00, 'assets/images/products/hat3.jpg',
-      'Featured on several of the runway look, the hight-domed that hat is made from straw effect fabroc interwomen with shiny threads.'),
-  Product('Summer hat', 54.00, 159.00, 'assets/images/products/hat4.jpg',
-      'Featured on several of the runway look, the hight-domed that hat is made from straw effect fabroc interwomen with shiny threads.'),
-  Product('Felt wide-hat', 84.00, 0, 'assets/images/products/hat1.jpg',
-      'Featured on several of the runway look, the hight-domed that hat is made from straw effect fabroc interwomen with shiny threads.'),
-  Product('Felt wide hat', 84.00, 99.00, 'assets/images/products/hat1.jpg',
-      'Featured on several of the runway look, the hight-domed that hat is made from straw effect fabroc interwomen with shiny threads.'),
+final List<Product> productsList = [
   Product(
-      'Felt hat for women',
-      76.00,
-      109.00,
-      'assets/images/products/hat3.jpg',
-      'Featured on several of the runway look, the hight-domed that hat is made from straw effect fabroc interwomen with shiny threads.'),
-  Product('Summer hat', 54.00, 0, 'assets/images/products/hat4.jpg',
-      'Featured on several of the runway look, the hight-domed that hat is made from straw effect fabroc interwomen with shiny threads.'),
-  Product('Summer hat', 54.00, 159.00, 'assets/images/products/hat4.jpg',
-      'Featured on several of the runway look, the hight-domed that hat is made from straw effect fabroc interwomen with shiny threads.'),
-  Product('Felt wide-hat', 84.00, 0, 'assets/images/products/hat1.jpg',
-      'Featured on several of the runway look, the hight-domed that hat is made from straw effect fabroc interwomen with shiny threads.'),
-  Product('Felt wide-hat', 84.00, 99.00, 'assets/images/products/hat1.jpg',
-      'Featured on several of the runway look, the hight-domed that hat is made from straw effect fabroc interwomen with shiny threads.'),
+      productName: 'Felt wide hat',
+      productPrice: 84.00,
+      productImage: 'assets/images/products/hat1.jpg',
+      productDesc:
+          'Featured on several of the runway look, the hight-domed that hat is made from straw effect fabroc interwomen with shiny threads.'),
   Product(
-      'Felt hat for women',
-      76.00,
-      109.00,
-      'assets/images/products/hat3.jpg',
-      'Featured on several of the runway look, the hight-domed that hat is made from straw effect fabroc interwomen with shiny threads.'),
-  Product('Summer hat', 54.00, 0, 'assets/images/products/hat4.jpg',
-      'Featured on several of the runway look, the hight-domed that hat is made from straw effect fabroc interwomen with shiny threads.'),
+      productName: 'Felt white brim-hat',
+      productPrice: 138.00,
+      productImage: 'assets/images/products/hat2.jpg',
+      productDesc:
+          'Featured on several of the runway look, the hight-domed that hat is made from straw effect fabroc interwomen with shiny threads.'),
+  Product(
+      productName: 'Felt hat for women',
+      productPrice: 76.00,
+      productPriceOld: 89.00,
+      productImage: 'assets/images/products/hat3.jpg',
+      productDesc:
+          'Featured on several of the runway look, the hight-domed that hat is made from straw effect fabroc interwomen with shiny threads.'),
+  Product(
+      productName: 'Summer hat',
+      productPrice: 54.00,
+      productPriceOld: 159.00,
+      productImage: 'assets/images/products/hat4.jpg',
+      productDesc:
+          'Featured on several of the runway look, the hight-domed that hat is made from straw effect fabroc interwomen with shiny threads.'),
+  Product(
+      productName: 'Felt wide-hat',
+      productPrice: 84.00,
+      productImage: 'assets/images/products/hat1.jpg',
+      productDesc:
+          'Featured on several of the runway look, the hight-domed that hat is made from straw effect fabroc interwomen with shiny threads.'),
+  Product(
+      productName: 'Felt wide hat',
+      productPrice: 84.00,
+      productPriceOld: 99.00,
+      productImage: 'assets/images/products/hat1.jpg',
+      productDesc:
+          'Featured on several of the runway look, the hight-domed that hat is made from straw effect fabroc interwomen with shiny threads.'),
+  Product(
+      productName: 'Felt hat for women',
+      productPrice: 76.00,
+      productPriceOld: 109.00,
+      productImage: 'assets/images/products/hat3.jpg',
+      productDesc:
+          'Featured on several of the runway look, the hight-domed that hat is made from straw effect fabroc interwomen with shiny threads.'),
+  Product(
+      productName: 'Summer hat',
+      productPrice: 54.00,
+      productImage: 'assets/images/products/hat4.jpg',
+      productDesc:
+          'Featured on several of the runway look, the hight-domed that hat is made from straw effect fabroc interwomen with shiny threads.'),
+  Product(
+      productName: 'Summer hat',
+      productPrice: 54.00,
+      productPriceOld: 159.00,
+      productImage: 'assets/images/products/hat4.jpg',
+      productDesc:
+          'Featured on several of the runway look, the hight-domed that hat is made from straw effect fabroc interwomen with shiny threads.'),
+  Product(
+      productName: 'Felt wide-hat',
+      productPrice: 84.00,
+      productImage: 'assets/images/products/hat1.jpg',
+      productDesc:
+          'Featured on several of the runway look, the hight-domed that hat is made from straw effect fabroc interwomen with shiny threads.'),
+  Product(
+      productName: 'Felt wide-hat',
+      productPrice: 84.00,
+      productPriceOld: 99.00,
+      productImage: 'assets/images/products/hat1.jpg',
+      productDesc:
+          'Featured on several of the runway look, the hight-domed that hat is made from straw effect fabroc interwomen with shiny threads.'),
+  Product(
+      productName: 'Felt hat for women',
+      productPrice: 76.00,
+      productPriceOld: 109.00,
+      productImage: 'assets/images/products/hat3.jpg',
+      productDesc:
+          'Featured on several of the runway look, the hight-domed that hat is made from straw effect fabroc interwomen with shiny threads.'),
+  Product(
+    productName: 'Summer hat',
+    productPrice: 54.00,
+    productImage: 'assets/images/products/hat4.jpg',
+    productDesc:
+        'Featured on several of the runway look, the hight-domed that hat is made from straw effect fabroc interwomen with shiny threads.',
+  ),
 ];

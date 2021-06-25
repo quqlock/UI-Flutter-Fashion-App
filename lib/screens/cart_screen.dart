@@ -4,9 +4,6 @@ import 'package:flutter_fashion_app/model/product.dart';
 import 'package:flutter_fashion_app/widgets/big_button.dart';
 
 class CartScreen extends StatefulWidget {
-  final Product product;
-  CartScreen(this.product);
-
   @override
   _CartScreenState createState() => _CartScreenState();
 }

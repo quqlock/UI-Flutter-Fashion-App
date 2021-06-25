@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_fashion_app/const.dart';
+import 'package:flutter_fashion_app/model/cart.dart';
 import 'package:flutter_fashion_app/model/product.dart';
 import 'package:flutter_fashion_app/screens/cart_screen.dart';
 import 'package:flutter_fashion_app/widgets/big_button.dart';
+import 'package:provider/provider.dart';
 
 class ProductScreen extends StatefulWidget {
   final Product product;
@@ -202,13 +204,8 @@ class _ProductScreenState extends State<ProductScreen> {
                           flex: 4,
                           child: buildBigButtonWidget(
                             () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      CartScreen(widget.product),
-                                ),
-                              );
+                              Provider.of<Cart>(context, listen: false)
+                                  .addProductToCart(widget.product);
                             },
                             'Add to cart',
                           ),

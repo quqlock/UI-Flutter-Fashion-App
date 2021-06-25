@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_fashion_app/const.dart';
+import 'package:flutter_fashion_app/model/cart.dart';
 import 'package:flutter_fashion_app/model/product.dart';
+import 'package:flutter_fashion_app/screens/cart_screen.dart';
 import 'package:flutter_fashion_app/screens/product_screen.dart';
+import 'package:provider/provider.dart';
 
 class ProductsListScreen extends StatefulWidget {
   const ProductsListScreen({Key? key}) : super(key: key);
@@ -114,26 +117,40 @@ class _ProductsListScreenState extends State<ProductsListScreen> {
                             children: [
                               Padding(
                                 padding: const EdgeInsets.only(right: 8.0),
-                                child: Text('Items',
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 15,
-                                    )),
-                              ),
-                              Container(
-                                width: 50,
-                                height: 50,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(5),
-                                  color: mainColor,
+                                child: Text(
+                                  'Items',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 15,
+                                  ),
                                 ),
-                                child: Center(
-                                  child: Text(
-                                    '2',
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold,
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => CartScreen(),
+                                    ),
+                                  );
+                                },
+                                child: Container(
+                                  width: 50,
+                                  height: 50,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(5),
+                                    color: mainColor,
+                                  ),
+                                  child: Center(
+                                    child: Text(
+                                      Provider.of<Cart>(context)
+                                          .showItemsNumber()
+                                          .toString(),
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -196,11 +213,11 @@ class _ProductsListScreenState extends State<ProductsListScreen> {
                     '\$' + productsList[1].productPrice.toStringAsFixed(2),
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
                   ),
-                  (productsList[index].productPriceOld != 0)
+                  (productsList[index].productPriceOld != null)
                       ? Text(
                           '\$' +
                               productsList[index]
-                                  .productPriceOld
+                                  .productPriceOld!
                                   .toStringAsFixed(2),
                           style: TextStyle(
                             color: Colors.grey,
