@@ -77,7 +77,9 @@ class Cart extends ChangeNotifier {
   }
 
   int showCartQuantity() {
-    return _productsInCart.length;
+    int totalProducts = 0;
+    _productsInCart.forEach((key, item) => totalProducts += item.quantity);
+    return totalProducts;
   }
 
   double showCartTotalPrice() {
