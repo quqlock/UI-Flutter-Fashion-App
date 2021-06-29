@@ -204,7 +204,15 @@ class _ProductScreenState extends State<ProductScreen> {
                           child: buildBigButtonWidget(
                             () {
                               Provider.of<Cart>(context, listen: false)
-                                  .addProductToCart(widget.product);
+                                  .addProductToCart(
+                                Item(
+                                  id: widget.product.productId,
+                                  name: widget.product.productName,
+                                  photo: widget.product.productImage,
+                                  price: widget.product.productPrice,
+                                  quantity: 1,
+                                ),
+                              );
                             },
                             'Add to cart',
                           ),

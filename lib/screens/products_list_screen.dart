@@ -144,7 +144,7 @@ class _ProductsListScreenState extends State<ProductsListScreen> {
                                   child: Center(
                                     child: Text(
                                       Provider.of<Cart>(context)
-                                          .showItemsNumber()
+                                          .showCartQuantity()
                                           .toString(),
                                       style: TextStyle(
                                         color: Colors.white,
@@ -210,7 +210,7 @@ class _ProductsListScreenState extends State<ProductsListScreen> {
                     height: 3,
                   ),
                   Text(
-                    '\$' + productsList[1].productPrice.toStringAsFixed(2),
+                    '\$' + productsList[index].productPrice.toStringAsFixed(2),
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
                   ),
                   (productsList[index].productPriceOld != null)
