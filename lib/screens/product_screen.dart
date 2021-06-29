@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_fashion_app/const.dart';
 import 'package:flutter_fashion_app/model/cart.dart';
 import 'package:flutter_fashion_app/model/product.dart';
-import 'package:flutter_fashion_app/screens/cart_screen.dart';
 import 'package:flutter_fashion_app/widgets/big_button.dart';
 import 'package:provider/provider.dart';
 

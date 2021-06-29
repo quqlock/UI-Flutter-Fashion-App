@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_fashion_app/const.dart';
-import 'package:flutter_fashion_app/model/product.dart';
 import 'package:flutter_fashion_app/widgets/big_button.dart';
 
 class CartScreen extends StatefulWidget {
