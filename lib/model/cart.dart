@@ -62,9 +62,12 @@ class Cart extends ChangeNotifier {
             price: existingCartIem.price,
             quantity: existingCartIem.quantity - 1),
       );
+      notifyListeners();
     } else {
       _productsInCart.remove(item.id);
+      notifyListeners();
     }
+    notifyListeners();
   }
 
   void clearCart() {

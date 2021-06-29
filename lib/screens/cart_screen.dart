@@ -113,7 +113,54 @@ class _CartScreenState extends State<CartScreen> {
                                             ),
                                           ],
                                         ),
-                                      )
+                                      ),
+                                      Flexible(
+                                        child: IconButton(
+                                            onPressed: () async {
+                                              final confirmDelete =
+                                                  await showDialog(
+                                                context: context,
+                                                builder: (context) =>
+                                                    AlertDialog(
+                                                  title: Text('Warning'),
+                                                  content: Text(
+                                                      'Are you sure you want to remove this product from cart?'),
+                                                  actions: [
+                                                    ElevatedButton(
+                                                      style: ElevatedButton
+                                                          .styleFrom(
+                                                              primary:
+                                                                  mainColor),
+                                                      onPressed: () {
+                                                        Navigator.of(context)
+                                                            .pop(true);
+                                                      },
+                                                      child: Text('Yes'),
+                                                    ),
+                                                    ElevatedButton(
+                                                      style: ElevatedButton
+                                                          .styleFrom(
+                                                              primary:
+                                                                  mainColor),
+                                                      onPressed: () {
+                                                        Navigator.of(context)
+                                                            .pop(false);
+                                                      },
+                                                      child: Text('No'),
+                                                    ),
+                                                  ],
+                                                ),
+                                              );
+                                              if (confirmDelete == true) {
+                                                cart.removeSingleItem(cart
+                                                    .productsInCart.values
+                                                    .toList()[index]);
+                                              }
+                                            },
+                                            icon: Icon(
+                                                Icons.delete_forever_outlined),
+                                            color: Colors.white),
+                                      ),
                                     ],
                                   ),
                                 ),
